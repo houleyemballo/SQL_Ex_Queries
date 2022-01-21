@@ -99,7 +99,8 @@ BACKUP DATABASE db_name
 TO DISK = "/home/databases/db_name-backup.db";
 
 --23. Backup Only Updated Part of Database
-/*Adding DIFFERENTIAL to the query will backup the updated parts or the parts that have changed since the last update. This reduces the time required to backup compared to a full backup*/
+/*Adding DIFFERENTIAL to the query will backup the updated parts or the parts that have changed since the last update. 
+This reduces the time required to backup compared to a full backup*/
 
 BACKUP DATABASE db_name 
 TO DISK = "/home/databases/db_name-backup.bak"
@@ -116,7 +117,8 @@ INSERT INTO high_paid_authors
 SELECT * FROM authors WHERE author_pay > 50000;
 
 --26. Creating Stored Procedures
-/* Stored procedures are SQL queries that can be run repeatedly. This saves you time when the queries are big. You can save them with a procedure name and then execute the procedure whenever required*/
+/* Stored procedures are SQL queries that can be run repeatedly. This saves you time when the queries are big. 
+You can save them with a procedure name and then execute the procedure whenever required*/
 
 CREATE PROCEDURE findAuthors 
 AS SELECT * FROM authors GO;
@@ -175,14 +177,16 @@ LEFT JOIN author_submissions ON authors.author_email=author_submissions.author_e
 
 --35. Right Outer Join
 
-/*The right outer join, in contrast to the left outer join, will return all values from the right table while only returning the matched values from the left table and displaying NULL for empty rows.*/
+/*The right outer join, in contrast to the left outer join, will return all values from the right table while only 
+returning the matched values from the left table and displaying NULL for empty rows.*/
 
 SELECT authors.author_name, authors.author_email, author_submissions.article_title FROM authors
 RIGHT JOIN author_submissions ON authors.author_email=author_submissions.author_email
 
 --36. Full Outer Joins
 
-/*The Full outer join combines the functionality of the Right and the Left Join in one. It returns all the values from both the tables and maks NULL for rows that do not have a match.*/
+/*The Full outer join combines the functionality of the Right and the Left Join in one. It returns all the values from both the tables
+and makes NULL for rows that do not have a match.*/
 
 SELECT authors.author_name, authors.author_email, author_submissions.article_title FROM authors
 FULL OUTER JOIN author_submissions ON authors.author_email=author_submissions.author_email
@@ -190,7 +194,8 @@ FULL OUTER JOIN author_submissions ON authors.author_email=author_submissions.au
 --37. Self Join
 
 /*
-A self join is a statement in which a table is joined with itself, an inner join is performed on a single table with itself, particularly in cases when comparisons have to be made between the records of the same table 
+A self join is a statement in which a table is joined with itself, an inner join is performed on a single table with itself, 
+particularly in cases when comparisons have to be made between the records of the same table 
 to determine a relationship or in the cases when the table has a foreign key whih references its own primary.
 
 */
@@ -214,7 +219,8 @@ FROM authors
 SELECT author_name, IFNULL(author_pay, 10000) 
 AS "Pay" FROM authors;
 
-/*The above query will return the values of the authors and the salaries that are being paid to them. If an author does not have a salary listed, it will automatically display 10,000 for the NULL value.*/
+/*The above query will return the values of the authors and the salaries that are being paid to them. If an author does not have a salary listed, 
+it will automatically display 10,000 for the NULL value.*/
 
 --40. Testing For NULL Values
 
